@@ -1,6 +1,5 @@
-# APP_DUEL
+# <img src="logo.jpeg" alt="logo" width="50px" height="50px"> APP_DUEL
 
-![App_logo](logo.jpeg) 
 
 ## Table of Contents
 - [Overview](#overview)
