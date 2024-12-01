@@ -1,6 +1,6 @@
 # APP_DUEL
 
-![logo.jpeg] 
+![App_logo](logo.jpeg) 
 
 ## Table of Contents
 - [Overview](#overview)
