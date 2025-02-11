@@ -1,0 +1,313 @@
+@font-face {
+    font-family: 'Pixelify Sans';
+    src: url("fonts/Pixelify_Sans/pixelfont.ttf");
+}
+*{
+    text-decoration: none;
+    font-family: "Pixelify Sans";
+}
+body{
+    background-image: linear-gradient(#760000, rgb(78, 41, 41), black);
+    min-height: 100vh;
+    padding-top: 50px;
+    margin: 0; /* Ensure no default margin */
+    overflow: hidden; /* Prevent scrolling during story */
+}
+#box{
+    display: flex;   
+    align-items: center;
+    justify-content: center;
+    position: relative; /* For absolute positioning within */
+    width: 100%;
+    height: 100%;
+} 
+.static{
+    width: 90vh; 
+    height: 80vh;   
+    background-size: cover;
+    background-repeat: no-repeat;   
+    background-position: center;
+    position: absolute;
+    flex-direction: column;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 99999;
+}
+/* Main Menu */
+#mainmenu{
+    border: 3px solid black;
+    width: 90vh; 
+    height: 80vh;   
+    background-image: url("images/mainmenu_background.png"); 
+    background-size: cover;
+    background-repeat: no-repeat;   
+    background-position: center;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 10px;
+    z-index: 1000;
+}
+#mainmenu h1{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    text-shadow: 0 0 10px red;
+}
+#mainmenu h2{
+    position: absolute;
+    top: 10%;
+    left: 30%;
+}
+.button{
+    width: 130px;
+    height: 50px;
+    margin: 5px;
+    font-size: larger;
+    text-transform: uppercase;
+    border-radius: 5px;
+    background-color: rgb(235, 14, 58);
+    transition: transform 0.15s ease, background-color 0.3s, text-decoration 0.3s;
+    cursor: pointer;
+    box-shadow: -3px 3px #880000;
+}
+.button:hover{
+    transform: scale(1.1);
+    text-decoration: underline;
+    background-color: rgb(236, 40, 79);
+}
+#howtoplay{
+    position: fixed;
+    width: 64%;
+    height: 60%;
+    max-width: 500px;
+    margin-left: 150px; 
+    font-size: large;
+    color: rgb(250, 0, 0);
+    background-color: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    text-shadow: 0px 0px 20px red;
+    border: red solid 3px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 12px;
+    display: none; 
+    padding: 5px;
+    z-index: 1001; /* Above main menu */
+}
+#close{
+    margin-left: 450px; 
+    margin-top: 10px;
+    color: rgb(250, 0, 0);
+    background-color: rgba(0, 0, 0, 0.6);
+    text-shadow: 0px 0px 20px red;
+    border: red solid 3px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 12px;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: transform 0.3s;
+}
+#close:hover{
+    transform: scale(1.2);
+}
+/* Play Game */
+#playgame{
+    border: 3px solid black;
+    width: 90vh; 
+    height: 80vh;   
+    background-size: cover;
+    background-repeat: no-repeat;   
+    background-position: center;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 10px;
+    position: relative;
+    background-image: url("images/Ingame_background.png");
+    z-index: 1000;
+}
+
+#attack, #defend {
+    position: absolute; /* Allow positioning */
+    left: 37%;
+    width: 60px;
+    height: 40px;
+    box-shadow: black 1px 0 0 1px;
+    background: crimson;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    display: none; /* Initially hidden */
+    z-index: 10; /* Ensure it appears on top */
+    transition: transform 0.3s;
+}
+#attack:hover, #defend:hover{
+    transform: scale(1.2);
+}
+#playgame button {
+    background: none;
+    z-index: 9999;
+}
+#playerdice, #monsterdice{
+    animation: none;
+    transition: transform 0.5s;
+    z-index: 9999;
+}
+
+@keyframes rollingDice{
+    0% {
+        transform: rotate(0deg) scale(1);
+        filter: blur(0px);
+    }
+    25% {
+        transform: rotate(45deg) scale(1.2);
+        filter: blur(0px);
+    }
+    50% {
+        transform: rotate(90deg) scale(1.4);
+        filter: blur(2px);
+    }
+    75% {
+        transform: rotate(135deg) scale(1.2); 
+        filter: blur(0px);
+    }
+    100% {
+        transform: rotate(180deg) scale(1);
+        filter: blur(0px);
+    }
+}
+
+#entity{
+    position: absolute;
+    height: 250px;
+    right: 10%;
+    top: 40%;
+    filter: saturate(1) drop-shadow(0 0 3px rgb(107, 1, 1));
+    animation: none;
+    transition: filter 0.3s;
+}
+@keyframes entity_hit{
+    from{
+        filter: brightness(1);
+    }
+    50%{
+        filter: brightness(500);
+    }
+    to{
+        filter: brightness(1);
+    }
+}
+#playerchar{
+    position: absolute;
+    height: 170px;
+    left: 10%;
+    top: 55%;
+    filter: saturate(1) drop-shadow(0 0 6px rgb(133, 2, 2));
+}
+#healAmountChar{
+    position: absolute;
+    height: 170px;
+    left: 27%;
+    top: 50%;
+    font-size: 40px;
+    filter: drop-shadow(0 0 6px rgb(133, 2, 2));
+    animation: none;       
+    visibility: hidden;
+}
+#healAmountMonster{
+    position: absolute;
+    height: 170px;
+    left: 70%;
+    top: 30%;
+    font-size: 40px;
+    filter: drop-shadow(0 0 6px rgb(133, 2, 2));
+    animation: none;       
+    visibility: hidden;
+}
+@keyframes heal{
+    from{
+        transform: translateY(0);
+        visibility: visible;
+    }
+    to {
+        transform: translateY(-50px);
+        opacity: 0; /* Corrected opacity */
+        visibility: hidden;
+    }
+}
+#hit_effect{
+    position: absolute;
+    height: 160px;
+    left: 12%;
+    top: 55%;
+    animation: none;
+    opacity: 0;
+}
+@keyframes hit{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+
+/* Story Section Styles */
+#story {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: none; /* Hidden initially */
+    align-items: center;
+    justify-content: center;
+    z-index: 100000; /* Above all other elements */
+}
+
+#storyVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none; /* Disable video interactions */
+}
+
+/* Custom Navigation Buttons */
+.story-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(235, 14, 58, 0.8);
+    border: none;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.story-button:hover {
+    background-color: rgba(236, 40, 79, 0.8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.left-button {
+    left: 20px;
+}
+
+.right-button {
+    right: 20px;
+}
+
+/* Loading GIF */
+.loading-gif {
+    opacity: 1;
+    width: 90vh;
+    height: 80vh;
+}

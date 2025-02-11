@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APP_DUEL</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div id="box">
+        <!-- Open Game Button -->
+        <div id="openthegame">
+            <button class="button" onclick="MainMenu()" style="width:150px;"> Load the Game </button>
+        </div>
+
+        <!-- Loading Section -->
+        <div id="loading" style="display:none;">
+            <img class="static" src="images/static.gif" alt="static">
+            <img class="loading-gif" src="images/loading.gif" alt="Loading">
+        </div>
+        
+        <!-- Main Menu -->
+        <div id="mainmenu" style="display:none">
+            <h1>APP's: Roll of Fate</h1>
+            <img class="static" src="images/static.gif" alt="static">
+            <button class="button" onclick="startGame()"> PLAY </button>
+            <button class="button" onclick="display_howtoplay()"> How to play </button>
+            <a href="index.html"><button class="button"> QUIT </button></a>
+            
+            <!-- How to Play Modal -->
+            <div id="howtoplay">
+                <button id="close" onclick="display_howtoplay();clickmouse_soundeffect()"> X </button>
+                <h2>How to play</h2>
+                <div style="margin-top: 25%; text-align:left; margin-left:15px">
+                    <p>1. Press on the dice</p>
+                    <p>2. Choose whether to attack or defend</p>
+                    <p>3. Kill the Entity to survive</p>
+                    <p>Entity: By default has an 8 sided dice</p>
+                    <p>Player's special ability: Get a 10 sided dice every 5 roll</p>
+                    <p><strong>The company will not compensate in case of death</strong></p>
+                </div>
+            </div><!--How to Play-->
+        </div> <!--Main Menu Closure-->
+
+        <!-- Story Section -->
+        <div id="story" style="display:none;">
+            <video id="storyVideo" src="video/scene1.mp4" preload="auto"></video>
+            <button id="prevScene" class="story-button left-button">Previous</button>
+            <button id="nextScene" class="story-button right-button">Next</button>
+        </div>
+
+        <!-- Play Game Area -->
+        <div id="playgame" style="display:none">
+            <img class="static" src="images/static.gif" alt="static">
+            <button id="attack" style="background:crimson;bottom:25%;">ATTACK</button>
+            <button id="defend" style="background:crimson;bottom:15%;" disabled>DEFEND</button>
+                
+            <button id="Rolldice" style="height:50px; width:50px; position:absolute; left:38%; bottom:4.5%; display:flex; align-items:center; justify-content:center;">
+                <img id="playerdice" src="images/dice/1.svg" alt="Player Dice" height="50px"/>
+            </button>
+            
+            <img id="monsterdice" src="images/dice/1.svg" alt="Monster Dice" height="50px"
+            style="height:50px;width:50px;position:absolute;left:56%;bottom:4%;"/>
+
+            <div style="width:90vh;margin:0px;position:absolute;top:83%">
+                <img src="images/BottomPatternPanel_119x17.png" style="width: 90vh;">
+            </div>
+            <div>
+                <img src="images/hpcontainer.png" style="width:80px;position:absolute;bottom:2%;left:3%">
+                <p id="playerHP" style="font-size:40px;position:absolute;bottom:-2%;left:5.5%">30</p>
+                <img id="hit_effect" src="images/hit.gif" alt="Hit Effect">
+                <img src="images/hpcontainer.png" style="width:80px;position:absolute;bottom:2%;left:85%">
+                <p id="monsterHP" style="font-size:40px;position:absolute;bottom:-2%;left:87.5%">50</p>
+
+                <img id="entity" src="images/entity.gif" alt="Entity">
+                <img id="playerchar" src="images/Idle_Animation.gif" alt="Player Character">
+
+                <p id="healAmountChar"></p>
+                <p id="healAmountMonster"></p>
+
+                <!-- Audio Elements -->
+                <audio id="hover"><source src="audio/click.mp3" type="audio/mp3">Your browser does not support the audio element.</audio>
+                <audio id="click"><source src="audio/mouseclick.mp3" type="audio/mp3">Your browser does not support the audio element.</audio>
+                <audio id="mainmenu_music"><source src="audio/Title-Disasterpeace.mp3" type="audio/mp3">Your browser does not support the audio element.</audio>
+                <audio id="ingame_music"><source src="audio/Pressure.mp3" type="audio/mp3">Your browser does not support the audio element.</audio>
+                <audio id="hit"><source src="audio/aq_hit.mp3" type="audio/mp3">Your browser does not support the audio element.</audio>
+                <audio id="hitchar"><source src="audio/mc_hitsound.mp3" type="audio/mp3">Your browser does not support the audio element.</audio>
+                <audio id="roll_effect"><source src="audio/rollingDice.mp3" type="audio/mp3">Your browser does not support the audio element.</audio>
+                <audio id="healchar"><source src="audio/tf2_healing.mp3" type="audio/mp3">Your browser does not support the audio element.</audio>
+                <audio id="healMonster"><source src="audio/healMonster.mp3" type="audio/mp3">Your browser does not support the audio element.</audio>
+                <audio id="you_lose"><source src="audio/youlose.wav" type="audio/wav">Your browser does not support the audio element.</audio>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
