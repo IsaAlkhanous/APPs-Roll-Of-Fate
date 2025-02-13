@@ -1,4 +1,4 @@
-# <img src="images/logo.jpeg" alt="logo" width="50px" height="50px"> **APP_DUEL: Roll of Fate**  
+# <img src="images/logo.jpeg" alt="logo" width="50px" height="50px"> **APP's Roll of Fate**  
 
 ![GitHub Repo Size](https://img.shields.io/github/repo-size/IsaAlkhanous/APPs-Roll-Of-Fate)
 ![GitHub Last Commit](https://img.shields.io/github/last-commit/IsaAlkhanous/APPs-Roll-Of-Fate)
@@ -11,7 +11,7 @@
 
 
 ## 🎮 Overview  
-**APP_DUEL** is a **turn-based dice battle game** where players must **strategically attack and defend** against an entity. Every **5 turns**, your dice upgrades to a **10-sided die**, increasing your attack power. Outsmart the entity and **survive the duel!**  
+**App's Roll of Fate** is a **turn-based dice battle game** where players must **strategically attack and defend** against an entity. Every **5 turns**, your dice upgrades to a **10-sided die**, increasing your attack power. Outsmart the entity and **survive the duel!**  
 
 🔥 **No installation needed!** Play directly in your browser:  
 👉 [**APPs-Roll-Of-Fate**](https://isaalkhanous.github.io/APPs-Roll-Of-Fate/)  
